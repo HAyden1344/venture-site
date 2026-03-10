@@ -1,0 +1,153 @@
+---
+import "../styles/global.css";
+---
+
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Join Us</title>
+    </head>
+
+    <body>
+        <section class="register">
+
+            <!-- Background top strip -->
+            <div class="register-bg">
+                <img src="/landing-bg.jpg" alt="Mountains">
+                <div class="register-bg-overlay"></div>
+            </div>
+
+            <!-- Back link -->
+            <div class="register-back">
+                <a href="/" class="back-link">← Back to Venture</a>
+            </div>
+
+            <!-- Header -->
+            <div class="register-header">
+                <div class="header-icons">
+                    <div class="tree-icon small"></div>
+                    <div class="tree-icon large"></div>
+                    <div class="tree-icon small"></div>
+                </div>
+
+                <h1>Claim Your Spot</h1>
+                <p>September 25–28, 2026 · LaSalle College Campus, Vancouver</p>
+            </div>
+
+            <!-- Form card -->
+            <div class="register-card">
+
+                <form class="register-form" id="registerForm">
+                    <div class="form-group">
+                        <label for="name">Full Name</label>
+                        <input id="name" name="name" placeholder="Your name" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input id="email" name="email" type="email" placeholder="you@example.com" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Your Role (For Team Matching)</label>
+
+                        <div class="role-grid">
+                            <label class="role-option">
+                                <input type="radio" name="role" value="Game Developer" required>
+                                <span>Game Developer</span>
+                            </label>
+
+                            <label class="role-option">
+                                <input type="radio" name="role" value="Artist / Illustrator">
+                                <span>Artist / Illustrator</span>
+                            </label>
+
+                            <label class="role-option">
+                                <input type="radio" name="role" value="Musician / Sound">
+                                <span>Musician / Sound</span>
+                            </label>
+
+                            <label class="role-option">
+                                <input type="radio" name="role" value="Writer / Narrative">
+                                <span>Writer / Narrative</span>
+                            </label>
+
+                            <label class="role-option">
+                                <input type="radio" name="role" value="Designer / UX">
+                                <span>Designer / UX</span>
+                            </label>
+
+                            <label class="role-option">
+                                <input type="radio" name="role" value="Just here for the vibes">
+                                <span>Just here for the vibes</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="team">Team Name <span class="optional">(optional)</span></label>
+                        <input id="team" name="team" placeholder="Leave blank to be matched">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="slack">Slack ID</label>
+                        <input id="slack" name="slack" placeholder="e.g. @yourname" required>
+                    </div>
+
+                    <button type="submit" class="btn-accent">RSVP Now</button>
+
+                    <div class="form-footer">
+                        <div class="footer-item">Sept 25–28, 2026</div>
+                        <div class="footer-item">Vancouver, BC</div>
+                    </div>
+                </form>
+
+                <!-- Success message -->
+                <div class="register-success" id="successMessage">
+                    <div class="success-icon"></div>
+                    <h2>You're In!</h2>
+                    <p id="successText"></p>
+                    <a href="/" class="btn-outline">Back to Venture</a>
+                </div>
+
+            </div>
+        </section>
+
+       <script>
+            const form = document.getElementById("registerForm");
+            const success = document.getElementById("successMessage");
+            const successText = document.getElementById("successText");
+
+            form.addEventListener("submit", async (e) => {
+                e.preventDefault();
+
+                const name = form.name.value || "adventurer";
+                const email = form.email.value;
+                const team = form.team.value;
+                const slack = form.slack.value;
+                const role = document.querySelector("input[name='role']:checked")?.value;
+
+                // --- SEND TO GOOGLE SHEETS ---
+                await fetch("https://script.google.com/macros/s/AKfycbwuaXEIjCDq6kWSN3GxUul5UCsqpyXEm_-8PhQJ3ZvxMFou4ersDBwcOGjLj1-nqFJ9/exec", {
+                    method: "POST",
+                    mode: "no-cors",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({
+                        name,
+                        email,
+                        role,
+                        team,
+                        slack
+                    })
+                });
+
+                // --- SHOW SUCCESS MESSAGE ---
+                successText.innerHTML = `Thanks, ${name}! We'll send details to <strong>${email}</strong> as the event approaches.`;
+
+                form.style.display = "none";
+                success.style.display = "block";
+            });
+        </script>
+    </body>
+</html>
