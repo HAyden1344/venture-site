@@ -784,11 +784,15 @@ footer {
 
 /*mobile adjustments*/
 @media (max-width: 480px) {
+
+  /*fix header*/
   .register .register-header {
     padding-inline: 1rem;
     padding-left: 1rem;
+    margin-top: 0;
   }
 
+  /* Fix card/form padding */
   .register .register-card {
     padding: 0 0.5rem 3rem;
   }
@@ -797,11 +801,29 @@ footer {
     padding: 1rem;
   }
 
+  /*collapse role grid*/
   .register .role-grid {
     grid-template-columns: 1fr;
   }
 
+  /*fix radio input*/
   .register .role-option input {
     flex-shrink: 0;
+    width: 1rem;
+    height: 1rem;
+  }
+
+  /*fix text overflowing*/
+  .register .role-option span {
+    flex: 1;
+    min-width: 0;
+    word-break: break-word;
+  }
+
+  /*box fit*/
+  .register .role-option {
+    padding: 0.75rem;
+    width: 100%;
+    box-sizing: border-box;
   }
 }
