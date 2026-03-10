@@ -552,15 +552,15 @@ footer {
 }
 
 /*-------------------------------------------------------- register section --------------------------------------------------------*/
-/* PAGE WRAPPER */
+/*page wrapper*/
 .register {
   min-height: 100vh;
   background: var(--background);
   position: relative;
-  overflow: hidden;
+  overflow: visible;
 }
 
-/* BACKGROUND STRIP */
+/*background strip*/
 .register .register-bg {
   position: absolute;
   top: 0; left: 0; right: 0;
@@ -584,10 +584,10 @@ footer {
   );
 }
 
-/* BACK LINK */
+/*back link*/
 .register .register-back {
   position: relative;
-  z-index: 2;
+  z-index: 10;
   padding: 1.5rem;
 }
 
@@ -649,29 +649,29 @@ footer {
   font-size: 0.9rem;
 }
 
-/* CARD WRAPPER */
+/*card wrapper*/
 .register .register-card {
   position: relative;
   z-index: 2;
   max-width: 32rem;
   margin: 0 auto;
-  padding: 0 1rem 6rem; /* keep horizontal page padding */
+  padding: 0 1rem 6rem;
 }
 
 
-/* FORM + SUCCESS CARD — now with internal padding */
+/*form and success card*/
 .register .register-form,
 .register .register-success {
   width: 100%;
   background: var(--background);
   border: 1px solid hsl(25 40% 12% / 0.2);
   border-radius: 1.5rem;
-  padding: 2rem;              /* ← THIS is the important part */
+  padding: 2rem;
   box-shadow: 0 10px 30px hsl(25 40% 12% / 0.15);
 }
 
 
-/* FORM FIELDS — guaranteed left aligned */
+/*form fields*/
 .register .form-group {
   margin-bottom: 1.5rem;
 }
@@ -696,7 +696,7 @@ footer {
   box-sizing: border-box;
 }
 
-/* ROLE GRID */
+/*role grid*/
 .register .role-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -723,7 +723,7 @@ footer {
   accent-color: var(--primary);
 }
 
-/* BUTTONS — namespaced */
+/*buttons*/
 .register .btn-accent {
   width: 100%;
   background: var(--accent);
@@ -752,7 +752,7 @@ footer {
   font-family: var(--font-body);
 }
 
-/* FOOTER */
+/*footer*/
 .register .form-footer {
   display: flex;
   justify-content: center;
@@ -762,7 +762,7 @@ footer {
   font-size: 0.75rem;
 }
 
-/* SUCCESS STATE */
+/*success state*/
 .register .register-success {
   display: none;
   text-align: center;
@@ -780,4 +780,19 @@ footer {
   padding-inline: 2rem;
   padding-left: clamp(2rem, 6vw, 4rem);
   text-align: center;
+}
+
+/*mobile adjustments*/
+@media (max-width: 480px) {
+  .register .register-form {
+    padding: 1.25rem;
+  }
+
+  .register .register-card {
+    padding: 0 0.75rem 4rem;
+  }
+
+  .register .role-grid {
+    grid-template-columns: 1fr;
+  }
 }
