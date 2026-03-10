@@ -721,7 +721,6 @@ footer {
 
 .register .role-option input {
   accent-color: var(--primary);
-  flex-shrink: 0;
 }
 
 /*buttons*/
@@ -785,25 +784,24 @@ footer {
 
 /*mobile adjustments*/
 @media (max-width: 480px) {
-  .register .register-form {
-    padding: 1rem;
+  .register .register-header {
+    padding-inline: 1rem;
+    padding-left: 1rem;
   }
 
   .register .register-card {
     padding: 0 0.5rem 3rem;
   }
 
+  .register .register-form {
+    padding: 1rem;
+  }
+
   .register .role-grid {
     grid-template-columns: 1fr;
   }
 
-  .register .register-header {
-    padding-inline: 1rem;
-    padding-left: 1rem;
-  }
-
-  .register .role-option {
-    padding: 0.75rem 1rem;
-    font-size: 0.9rem;
+  .register .role-option input {
+    flex-shrink: 0;
   }
 }
