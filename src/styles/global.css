@@ -392,6 +392,7 @@ footer {
   line-height: 1.5;
 }
 /*-------------------------------------------------------- schedule section --------------------------------------------------------*/
+
 /*section wrapper*/
 .schedule {
   padding: 7rem 1rem;
@@ -658,6 +659,12 @@ footer {
   border-radius: 1.5rem;
   padding: 2rem;
   box-shadow: 0 10px 30px hsl(25 40% 12% / 0.15);
+}
+
+.register .register-card,
+.register .register-form,
+.register .register-success {
+    box-sizing: border-box;
 }
 
 
