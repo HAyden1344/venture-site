@@ -557,7 +557,7 @@ footer {
   min-height: 100vh;
   background: var(--background);
   position: relative;
-  overflow: visible;
+  overflow-x: hidden;
 }
 
 /*background strip*/
@@ -601,16 +601,6 @@ footer {
 
 .register .back-link:hover {
   color: var(--primary-foreground);
-}
-
-/*header*/
-.register .register-header {
-  position: relative;
-  z-index: 2;
-  text-align: center;
-  padding-top: 1rem;
-  padding-bottom: 2rem;
-  margin-top: -3.5rem;
 }
 
 .register .header-icons {
@@ -776,10 +766,18 @@ footer {
   margin: 0 auto 1rem;
 }
 
+/*header*/
 .register .register-header {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  padding-top: 1rem;
+  padding-bottom: 2rem;
+
   padding-inline: 2rem;
   padding-left: clamp(2rem, 6vw, 4rem);
-  text-align: center;
+
+  margin-top: -3.5rem;
 }
 
 /*mobile adjustments*/
@@ -787,10 +785,11 @@ footer {
 
   /*fix header*/
   .register .register-header {
-    padding-inline: 1rem;
-    padding-left: 1rem;
-    margin-top: 0;
+    padding-inline: 1rem !important;
+    padding-left: 1rem !important;
+    margin-top: 0 !important;
   }
+
 
   /* Fix card/form padding */
   .register .register-card {
